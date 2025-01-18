@@ -1,126 +1,102 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>SAMP HUD</title>
-  <style>
-    body {
-      margin: 0;
-      padding: 0;
-      background-color: #000; /* Black background to match SAMP */
-    }
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Transparent HUD</title>
+    <style>
+        /* Remove any default body background */
+        body {
+            margin: 0;
+            padding: 0;
+            background: transparent; /* Transparent background */
+            overflow: hidden; /* Prevent scrollbars */
+            font-family: 'Arial', sans-serif;
+        }
 
-    .hud-container {
-      position: fixed;
-      left: 320px; /* Space from the right */
-      bottom: 20px; /* Space above the bottom (minimap placeholder) */
-      width: 200px;
-      font-family: Arial, sans-serif;
-      color: white;
-    }
+        /* Centered container */
+        .hud-container {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 300px; /* Adjust width as needed */
+            padding: 20px;
+            background: rgba(0, 0, 0, 0.8); /* Semi-transparent black background */
+            border-radius: 10px;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+        }
 
-    .hud-item {
-      display: flex;
-      align-items: center;
-      margin-bottom: 15px;
-      background: linear-gradient(145deg, #1f1f1f, #2a2a2a); /* Stylish gradient */
-      border-radius: 10px;
-      padding: 10px;
-      box-shadow: inset 2px 2px 5px rgba(0, 0, 0, 0.7), 2px 2px 8px rgba(0, 0, 0, 0.5);
-    }
+        /* Header text styling */
+        .hud-header {
+            color: white;
+            font-size: 18px;
+            margin-bottom: 10px;
+            text-align: center;
+        }
 
-    .hud-icon {
-      width: 40px;
-      height: 40px;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      background: #444;
-      border-radius: 50%;
-      margin-right: 10px;
-      font-size: 20px;
-      color: white; /* Icon color */
-    }
+        /* Example bars */
+        .progress-bar {
+            height: 20px;
+            width: 100%;
+            background: rgba(255, 255, 255, 0.2); /* Light background for bars */
+            border-radius: 5px;
+            overflow: hidden;
+            margin-bottom: 10px;
+        }
 
-    .hud-content {
-      flex: 1;
-    }
+        .progress-bar span {
+            display: block;
+            height: 100%;
+            transition: width 0.3s ease;
+        }
 
-    .hud-text {
-      font-size: 12px;
-      margin-bottom: 5px;
-    }
+        .health-bar span {
+            background: #e74c3c; /* Red for health */
+            width: 80%; /* Example width */
+        }
 
-    .hud-bar {
-      width: 100%;
-      height: 6px;
-      background-color: #333;
-      border-radius: 5px;
-      overflow: hidden;
-    }
+        .armor-bar span {
+            background: #3498db; /* Blue for armor */
+            width: 50%; /* Example width */
+        }
 
-    .hud-bar-fill {
-      height: 100%;
-      background-color: #1900ff; /* Default green */
-      border-radius: 5px;
-    }
-
-    .hud-bar-fill.red {
-      background-color: #FF0000;
-    }
-
-    .hud-bar-fill.blue {
-      background-color: #ff8400;
-    }
-  </style>
+        .hunger-bar span {
+            background: #f1c40f; /* Yellow for hunger */
+            width: 30%; /* Example width */
+        }
+    </style>
 </head>
 <body>
     <div class="hud-container">
-    <div class="hud-item">
-      <div class="hud-icon">❤️</div>
-      <div class="hud-content">
-        <div class="hud-text">Health</div>
-        <div class="hud-bar">
-          <div class="hud-bar-fill red" id="health-bar" style="width: 90%;"></div>
-        </div>
-      </div>
-    </div>
-        <div class="hud-item">
-          <div class="hud-icon">🛡️</div>
-          <div class="hud-content">
-            <div class="hud-text">Armor</div>
-            <div class="hud-bar">
-              <div class="hud-bar-fill" id="armor-bar" style="width: 75%;"></div>
-            </div>
-          </div>
-        </div>
-    <div class="hud-item">
-      <div class="hud-icon">🍔</div>
-      <div class="hud-content">
-        <div class="hud-text">Hunger</div>
-        <div class="hud-bar">
-          <div class="hud-bar-fill blue" id="hunger-bar" style="width: 60%;"></div>
-        </div>
-      </div>
-    </div>
-  </div>
+        <div class="hud-header">Player HUD</div>
 
-  <script>
-    // Function to dynamically update HUD elements
-    function updateHUD(health, armor, hunger) {
-      document.getElementById('health-bar').style.width = health + '%';
-      document.getElementById('armor-bar').style.width = armor + '%';
-      document.getElementById('hunger-bar').style.width = hunger + '%';
-    }
+        <!-- Health bar -->
+        <div class="progress-bar health-bar">
+            <span></span>
+        </div>
 
-    // Example: Updating values (replace with actual game data)
-    setInterval(() => {
-      const health = 80;  // Example health percentage
-      const armor = 60;   // Example armor percentage
-      const hunger = 50;  // Example hunger percentage
-      updateHUD(health, armor, hunger);
-    }, 1000); // Update every second
-  </script>
+        <!-- Armor bar -->
+        <div class="progress-bar armor-bar">
+            <span></span>
+        </div>
+
+        <!-- Hunger bar -->
+        <div class="progress-bar hunger-bar">
+            <span></span>
+        </div>
+    </div>
+
+    <script>
+        // Example: Function to dynamically update bars
+        function updateHUD(health, armor, hunger) {
+            document.querySelector('.health-bar span').style.width = health + '%';
+            document.querySelector('.armor-bar span').style.width = armor + '%';
+            document.querySelector('.hunger-bar span').style.width = hunger + '%';
+        }
+
+        // Example data update
+        setTimeout(() => updateHUD(90, 70, 50), 2000); // Simulates data change
+    </script>
 </body>
 </html>
