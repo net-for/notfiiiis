@@ -13,8 +13,8 @@
 
     .hud-container {
       position: fixed;
-      right: 50px; /* Space from the right */
-      bottom: 120px; /* Space above the bottom (minimap placeholder) */
+      left: 320px; /* Space from the right */
+      bottom: 20px; /* Space above the bottom (minimap placeholder) */
       width: 200px;
       font-family: Arial, sans-serif;
       color: white;
@@ -62,7 +62,7 @@
 
     .hud-bar-fill {
       height: 100%;
-      background-color: #00FF00; /* Default green */
+      background-color: #1900ff; /* Default green */
       border-radius: 5px;
     }
 
@@ -71,21 +71,12 @@
     }
 
     .hud-bar-fill.blue {
-      background-color: #0066FF;
+      background-color: #ff8400;
     }
   </style>
 </head>
 <body>
-  <div class="hud-container">
-    <div class="hud-item">
-      <div class="hud-icon">🛡️</div>
-      <div class="hud-content">
-        <div class="hud-text">Armor</div>
-        <div class="hud-bar">
-          <div class="hud-bar-fill" id="armor-bar" style="width: 75%;"></div>
-        </div>
-      </div>
-    </div>
+    <div class="hud-container">
     <div class="hud-item">
       <div class="hud-icon">❤️</div>
       <div class="hud-content">
@@ -95,6 +86,15 @@
         </div>
       </div>
     </div>
+        <div class="hud-item">
+          <div class="hud-icon">🛡️</div>
+          <div class="hud-content">
+            <div class="hud-text">Armor</div>
+            <div class="hud-bar">
+              <div class="hud-bar-fill" id="armor-bar" style="width: 75%;"></div>
+            </div>
+          </div>
+        </div>
     <div class="hud-item">
       <div class="hud-icon">🍔</div>
       <div class="hud-content">
