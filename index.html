@@ -7,25 +7,27 @@
   <style>
     body {
       margin: 0;
-      background-color: #000; /* Black background */
+      padding: 0;
+      background-color: #000;
+    }
+
+    .hud-container {
+      position: fixed;
+      right: 20px;
+      bottom: 100px; /* Adjust as needed to place above the minimap */
+      width: 250px;
       font-family: Arial, sans-serif;
       color: white;
-      display: flex;
-      flex-direction: column;
-      align-items: flex-start;
-      justify-content: center;
-      padding: 20px;
     }
 
     .hud-item {
       display: flex;
       align-items: center;
       margin-bottom: 15px;
-      background: rgba(0, 0, 0, 0.8); /* Semi-transparent background */
+      background: linear-gradient(145deg, #1f1f1f, #2a2a2a); /* Stylish gradient */
       border-radius: 10px;
-      padding: 10px 15px;
-      box-shadow: 0 2px 5px rgba(0, 0, 0, 0.5);
-      width: 300px;
+      padding: 10px;
+      box-shadow: inset 2px 2px 5px rgba(0, 0, 0, 0.7), 2px 2px 8px rgba(0, 0, 0, 0.5);
     }
 
     .hud-icon {
@@ -34,22 +36,10 @@
       display: flex;
       align-items: center;
       justify-content: center;
+      background: #444;
       border-radius: 50%;
-      background: #222;
-      margin-right: 15px;
+      margin-right: 10px;
       font-size: 20px;
-    }
-
-    .hud-icon.shield {
-      background-color: #444;
-    }
-
-    .hud-icon.heart {
-      background-color: #8b0000;
-    }
-
-    .hud-icon.hunger {
-      background-color: #003399;
     }
 
     .hud-content {
@@ -57,22 +47,20 @@
     }
 
     .hud-text {
-      font-size: 14px;
+      font-size: 12px;
       margin-bottom: 5px;
     }
 
     .hud-bar {
       width: 100%;
       height: 8px;
-      border-radius: 5px;
       background-color: #333;
+      border-radius: 5px;
       overflow: hidden;
-      position: relative;
     }
 
     .hud-bar-fill {
       height: 100%;
-      width: 75%; /* Adjust for current value */
       background-color: #00FF00; /* Default green */
       border-radius: 5px;
     }
@@ -87,37 +75,52 @@
   </style>
 </head>
 <body>
-  <!-- Shield -->
-  <div class="hud-item">
-    <div class="hud-icon shield">🛡️</div>
-    <div class="hud-content">
-      <div class="hud-text">Protection</div>
-      <div class="hud-bar">
-        <div class="hud-bar-fill" style="width: 90%;"></div>
+  <div class="hud-container">
+    <div class="hud-item">
+      <div class="hud-icon">🛡️</div>
+      <div class="hud-content">
+        <div class="hud-text">Armor</div>
+        <div class="hud-bar">
+          <div class="hud-bar-fill" id="armor-bar" style="width: 75%;"></div>
+        </div>
+      </div>
+    </div>
+    <div class="hud-item">
+      <div class="hud-icon">❤️</div>
+      <div class="hud-content">
+        <div class="hud-text">Health</div>
+        <div class="hud-bar">
+          <div class="hud-bar-fill red" id="health-bar" style="width: 90%;"></div>
+        </div>
+      </div>
+    </div>
+    <div class="hud-item">
+      <div class="hud-icon">🍔</div>
+      <div class="hud-content">
+        <div class="hud-text">Hunger</div>
+        <div class="hud-bar">
+          <div class="hud-bar-fill blue" id="hunger-bar" style="width: 60%;"></div>
+        </div>
       </div>
     </div>
   </div>
 
-  <!-- Heart -->
-  <div class="hud-item">
-    <div class="hud-icon heart">❤️</div>
-    <div class="hud-content">
-      <div class="hud-text">Health</div>
-      <div class="hud-bar">
-        <div class="hud-bar-fill red" style="width: 50%;"></div>
-      </div>
-    </div>
-  </div>
+  <script>
+    // Function to update the HUD dynamically
+    function updateHUD(health, armor, hunger) {
+      document.getElementById('health-bar').style.width = health + '%';
+      document.getElementById('armor-bar').style.width = armor + '%';
+      document.getElementById('hunger-bar').style.width = hunger + '%';
+    }
 
-  <!-- Hunger -->
-  <div class="hud-item">
-    <div class="hud-icon hunger">🍔</div>
-    <div class="hud-content">
-      <div class="hud-text">Hunger</div>
-      <div class="hud-bar">
-        <div class="hud-bar-fill blue" style="width: 70%;"></div>
-      </div>
-    </div>
-  </div>
+    // Example: Updating with values from the game
+    setInterval(() => {
+      // Replace with real game data
+      const health = 85; // Example: Replace with GetPlayerHealth percentage
+      const armor = 50;  // Example: Replace with GetPlayerArmor percentage
+      const hunger = 70; // Example: Replace with custom hunger variable
+      updateHUD(health, armor, hunger);
+    }, 500); // Update every 500ms
+  </script>
 </body>
 </html>
