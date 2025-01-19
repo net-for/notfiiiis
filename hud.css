@@ -1,0 +1,96 @@
+body {
+    margin: 0;
+    padding: 0;
+    background: transparent;
+    font-family: Arial, sans-serif;
+}
+
+#hud {
+    position: relative;
+    width: 100%;
+    height: 100%;
+}
+
+#server-name {
+    position: absolute;
+    top: 10px;
+    left: 10px;
+    color: white;
+    font-size: 20px;
+}
+
+#side-icons {
+    position: absolute;
+    left: 10px;
+    top: 50%;
+    transform: translateY(-50%);
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.icon {
+    background: #333;
+    color: white;
+    padding: 10px;
+    text-align: center;
+    border-radius: 5px;
+    font-size: 16px;
+}
+
+#top-right {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    color: white;
+    text-align: right;
+}
+
+.stat {
+    font-size: 16px;
+}
+
+#stars {
+    margin-top: 10px;
+    color: gold;
+    font-size: 18px;
+}
+
+#resources {
+    position: absolute;
+    right: 10px;
+    top: 50%;
+    transform: translateY(-50%);
+    color: white;
+    text-align: right;
+}
+
+.resource {
+    font-size: 16px;
+    margin-bottom: 10px;
+}
+
+.money {
+    color: green;
+}
+
+.car-money {
+    color: red;
+}
+
+#speedometer {
+    position: absolute;
+    bottom: 10px;
+    right: 10px;
+    text-align: center;
+    color: white;
+}
+
+.speed {
+    font-size: 48px;
+    font-weight: bold;
+}
+
+.unit {
+    font-size: 16px;
+}
