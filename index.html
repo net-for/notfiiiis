@@ -56,7 +56,7 @@
 
         .hud-header .user-info .rank {
             font-size: 12px;
-            color: #ff8c00;
+            color: #ff4d4d;
         }
 
         .hud-stats {
@@ -72,7 +72,7 @@
 
         .hud-stats .stat i {
             margin-right: 5px;
-            color: #ff8c00;
+            color: #ff4d4d;
         }
 
         .hud-resources {
@@ -102,7 +102,7 @@
         .progress-bar .fill {
             height: 100%;
             border-radius: 5px;
-            background: linear-gradient(90deg, #8a2be2, #4b0082);
+            background: linear-gradient(90deg, #8a2be2, #ff4d4d);
         }
 
     </style>
@@ -117,30 +117,30 @@
                 <img src="https://placehold.co/20x20" alt="Logo">
             </div>
             <div class="user-info">
-                <div class="username">11</div>
-                <div class="rank">2 Стари</div>
+                <div class="username" id="username">Player</div>
+                <div class="rank" id="rank">Rank: 1</div>
             </div>
         </div>
 
         <!-- Stats -->
         <div class="hud-stats">
             <div class="stat">
-                <div><i class="fa fa-user"></i> 2 / 1000</div>
-                <div>ID: 0</div>
+                <div><i class="fa fa-user"></i> <span id="userStats">0 / 1000</span></div>
+                <div>ID: <span id="userID">0</span></div>
             </div>
             <div class="stat">
-                <div>Stars: <span style="color: #ff8c00;">★★★★★</span></div>
+                <div>Stars: <span id="stars">★★★★★</span></div>
             </div>
         </div>
 
         <!-- Resources -->
         <div class="hud-resources">
             <div class="resource">
-                <div>6673552₾</div>
+                <div><span id="money">0₾</span></div>
                 <div><i class="fa fa-lock"></i></div>
             </div>
             <div class="resource">
-                <div>5000₾</div>
+                <div><span id="points">0₾</span></div>
                 <div><i class="fa fa-horse"></i></div>
             </div>
         </div>
@@ -148,10 +148,10 @@
         <!-- Progress Bars -->
         <div class="hud-progress">
             <div class="progress-bar">
-                <div class="fill" style="width: 75%;"></div>
+                <div class="fill" style="width: 75%;" id="progress1"></div>
             </div>
             <div class="progress-bar">
-                <div class="fill" style="width: 50%;"></div>
+                <div class="fill" style="width: 50%;" id="progress2"></div>
             </div>
         </div>
     </div>
