@@ -13,46 +13,74 @@
         }
 
         .glass-bg {
-            background: rgba(255, 0, 0, 0.1);
-            backdrop-filter: blur(10px);
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(12px);
+            border-radius: 15px;
+            box-shadow: 0 10px 40px rgba(0, 0, 0, 0.4);
         }
 
         .glass-bg:hover {
-            background: rgba(255, 0, 0, 0.2);
+            background: rgba(255, 255, 255, 0.2);
         }
 
-        .shadow-red {
-            box-shadow: 0 4px 20px rgba(255, 0, 0, 0.4);
+        .shadow-gradient {
+            box-shadow: 0 6px 30px rgba(255, 165, 0, 0.5);
         }
 
         .icon-hover:hover {
             transform: scale(1.1);
-            color: #ff4d4d;
+            color: #ffab00;
         }
 
         .progress-bar {
-            background: linear-gradient(90deg, #ff0000, #ff4d4d);
+            background: linear-gradient(90deg, #8a2be2, #4b0082);
         }
 
         .smooth-transition {
             transition: all 0.3s ease-in-out;
         }
+
+        .text-glow {
+            text-shadow: 0 0 5px rgba(255, 255, 255, 0.7);
+        }
+
+        .rounded-md {
+            border-radius: 12px;
+        }
+
+        .floating {
+            position: fixed;
+            top: 20px;
+            right: 20px;
+            z-index: 9999;
+        }
+
+        .container {
+            max-width: 350px;
+            width: 100%;
+        }
+
+        .progress-wrapper {
+            border-radius: 15px;
+            padding: 5px;
+            background: rgba(0, 0, 0, 0.3);
+        }
     </style>
 </head>
 
 <body class="flex items-center justify-center">
-    <div class="glass-bg rounded-lg p-6 shadow-red max-w-sm w-full">
+    <div class="glass-bg floating rounded-lg p-6 shadow-gradient container">
         <!-- Header -->
-        <div class="flex items-center space-x-4 border-b border-red-700 pb-4">
-            <div class="bg-red-800 p-2 rounded-md shadow-md">
-                <img src="https://placehold.co/50x50" alt="Logo" class="w-10 h-10 rounded-full">
+        <div class="flex items-center space-x-4 border-b border-purple-700 pb-4">
+            <div class="bg-purple-800 p-2 rounded-md shadow-md">
+                <img src="https://placehold.co/50x50" alt="Logo" class="w-12 h-12 rounded-full">
             </div>
             <div>
-                <div class="text-white text-2xl font-semibold">11</div>
-                <div class="text-red-400 text-sm">გამარჯობა</div>
+                <div class="text-white text-3xl font-semibold text-glow">11</div>
+                <div class="text-purple-400 text-sm">გამარჯობა</div>
             </div>
             <div class="flex-1 text-right">
-                <div class="text-red-400 text-sm">2 სტარი</div>
+                <div class="text-purple-400 text-sm">2 სტარი</div>
             </div>
         </div>
 
@@ -60,24 +88,24 @@
         <div class="mt-4">
             <div class="flex items-center justify-between mb-2">
                 <div class="flex items-center space-x-2">
-                    <div class="bg-red-800 p-2 rounded-full icon-hover smooth-transition">
+                    <div class="bg-purple-800 p-3 rounded-full icon-hover smooth-transition">
                         <i class="fas fa-user text-white"></i>
                     </div>
-                    <div class="text-red-400 text-lg">2 / 1000</div>
+                    <div class="text-purple-400 text-lg">2 / 1000</div>
                 </div>
                 <div class="flex items-center space-x-2">
-                    <div class="text-red-400 text-sm">ID:</div>
+                    <div class="text-purple-400 text-sm">ID:</div>
                     <div class="text-white text-lg">0</div>
                 </div>
             </div>
 
             <!-- Stars -->
             <div class="flex space-x-1">
-                <i class="fas fa-star text-red-600 icon-hover smooth-transition"></i>
-                <i class="fas fa-star text-red-600 icon-hover smooth-transition"></i>
-                <i class="fas fa-star text-red-600 icon-hover smooth-transition"></i>
-                <i class="fas fa-star text-red-600 icon-hover smooth-transition"></i>
-                <i class="fas fa-star text-red-600 icon-hover smooth-transition"></i>
+                <i class="fas fa-star text-orange-600 icon-hover smooth-transition"></i>
+                <i class="fas fa-star text-orange-600 icon-hover smooth-transition"></i>
+                <i class="fas fa-star text-orange-600 icon-hover smooth-transition"></i>
+                <i class="fas fa-star text-orange-600 icon-hover smooth-transition"></i>
+                <i class="fas fa-star text-orange-600 icon-hover smooth-transition"></i>
             </div>
         </div>
 
@@ -85,21 +113,25 @@
         <div class="mt-6">
             <div class="flex justify-between items-center text-white mb-4">
                 <div class="text-lg">6673552₾</div>
-                <i class="fas fa-lock text-green-500 text-xl"></i>
+                <i class="fas fa-lock text-orange-500 text-xl"></i>
             </div>
             <div class="flex justify-between items-center text-white">
                 <div class="text-lg">5000₾</div>
-                <i class="fas fa-horse text-red-500 text-xl"></i>
+                <i class="fas fa-horse text-purple-500 text-xl"></i>
             </div>
         </div>
 
         <!-- Progress Bars -->
         <div class="mt-6 space-y-4">
-            <div class="w-full bg-gray-800 rounded-full h-2.5">
-                <div class="progress-bar h-2.5 rounded-full" style="width: 75%;"></div>
+            <div class="progress-wrapper">
+                <div class="w-full bg-gray-800 rounded-full h-3">
+                    <div class="progress-bar h-3 rounded-full" style="width: 75%;"></div>
+                </div>
             </div>
-            <div class="w-full bg-gray-800 rounded-full h-2.5">
-                <div class="progress-bar h-2.5 rounded-full" style="width: 50%;"></div>
+            <div class="progress-wrapper">
+                <div class="w-full bg-gray-800 rounded-full h-3">
+                    <div class="progress-bar h-3 rounded-full" style="width: 50%;"></div>
+                </div>
             </div>
         </div>
     </div>
