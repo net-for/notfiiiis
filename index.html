@@ -3,100 +3,45 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Transparent HUD</title>
-    <style>
-        /* Remove any default body background */
-        body {
-            margin: 0;
-            padding: 0;
-            background: transparent; /* Transparent background */
-            overflow: hidden; /* Prevent scrollbars */
-            font-family: 'Arial', sans-serif;
-        }
-
-        /* Centered container */
-        .hud-container {
-            position: absolute;
-            top: 50%;
-            left: 50%;
-            transform: translate(-50%, -50%);
-            width: 300px; /* Adjust width as needed */
-            padding: 20px;
-            background: rgba(0, 0, 0, 0.8); /* Semi-transparent black background */
-            border-radius: 10px;
-            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
-        }
-
-        /* Header text styling */
-        .hud-header {
-            color: white;
-            font-size: 18px;
-            margin-bottom: 10px;
-            text-align: center;
-        }
-
-        /* Example bars */
-        .progress-bar {
-            height: 20px;
-            width: 100%;
-            background: rgba(255, 255, 255, 0.2); /* Light background for bars */
-            border-radius: 5px;
-            overflow: hidden;
-            margin-bottom: 10px;
-        }
-
-        .progress-bar span {
-            display: block;
-            height: 100%;
-            transition: width 0.3s ease;
-        }
-
-        .health-bar span {
-            background: #e74c3c; /* Red for health */
-            width: 80%; /* Example width */
-        }
-
-        .armor-bar span {
-            background: #3498db; /* Blue for armor */
-            width: 50%; /* Example width */
-        }
-
-        .hunger-bar span {
-            background: #f1c40f; /* Yellow for hunger */
-            width: 30%; /* Example width */
-        }
-    </style>
+    <title>SA:MP HUD</title>
+    <link rel="stylesheet" href="hud.css">
 </head>
 <body>
-    <div class="hud-container">
-        <div class="hud-header">Player HUD</div>
+    <div id="hud">
+        <!-- Top Left Text -->
+        <div id="server-name">🔥 MLIFE Role Play</div>
 
-        <!-- Health bar -->
-        <div class="progress-bar health-bar">
-            <span></span>
+        <!-- Side Icons -->
+        <div id="side-icons">
+            <div class="icon">N</div>
+            <div class="icon">M</div>
+            <div class="icon">P</div>
+            <div class="icon">B</div>
+            <div class="icon">X</div>
         </div>
 
-        <!-- Armor bar -->
-        <div class="progress-bar armor-bar">
-            <span></span>
+        <!-- Top Right Stats -->
+        <div id="top-right">
+            <div id="player-info">
+                <div class="stat">11</div>
+                <div class="stat">2</div>
+                <div class="stat">ID: 0</div>
+            </div>
+            <div id="stars">⭐⭐⭐⭐⭐</div>
         </div>
 
-        <!-- Hunger bar -->
-        <div class="progress-bar hunger-bar">
-            <span></span>
+        <!-- Money and Resources -->
+        <div id="resources">
+            <div class="resource"><span class="money">6673552₾</span></div>
+            <div class="resource"><span class="car-money">5000₾</span></div>
+        </div>
+
+        <!-- Speedometer -->
+        <div id="speedometer">
+            <div class="speed">73</div>
+            <div class="unit">MPH</div>
         </div>
     </div>
-
-    <script>
-        // Example: Function to dynamically update bars
-        function updateHUD(health, armor, hunger) {
-            document.querySelector('.health-bar span').style.width = health + '%';
-            document.querySelector('.armor-bar span').style.width = armor + '%';
-            document.querySelector('.hunger-bar span').style.width = hunger + '%';
-        }
-
-        // Example data update
-        setTimeout(() => updateHUD(90, 70, 50), 2000); // Simulates data change
-    </script>
 </body>
+<script src="hud.js"></script>
 </html>
