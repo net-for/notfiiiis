@@ -1,162 +1,160 @@
 <html lang="en">
-
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Smart HUD</title>
-    <script src="https://cdn.tailwindcss.com"></script>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
     <style>
         body {
-            background: linear-gradient(135deg, #2e2e2e, #1a1a1a);
-            min-height: 100vh;
+            margin: 0;
+            padding: 0;
+            background: transparent;
+            font-family: Arial, sans-serif;
         }
 
-        .glass-bg {
-            background: rgba(255, 255, 255, 0.1);
-            backdrop-filter: blur(12px);
-            border-radius: 15px;
-            box-shadow: 0 10px 40px rgba(0, 0, 0, 0.4);
-        }
-
-        .glass-bg:hover {
-            background: rgba(255, 255, 255, 0.2);
-        }
-
-        .shadow-gradient {
-            box-shadow: 0 6px 30px rgba(255, 165, 0, 0.5);
-        }
-
-        .icon-hover:hover {
-            transform: scale(1.1);
-            color: #ffab00;
-        }
-
-        .progress-bar {
-            background: linear-gradient(90deg, #8a2be2, #4b0082);
-        }
-
-        .smooth-transition {
-            transition: all 0.3s ease-in-out;
-        }
-
-        .text-glow {
-            text-shadow: 0 0 5px rgba(255, 255, 255, 0.7);
-        }
-
-        .rounded-md {
-            border-radius: 12px;
-        }
-
-        .floating {
+        .hud-container {
             position: fixed;
-            top: 10px;
-            right: 10px;
-            z-index: 9999;
+            top: 20px;
+            right: 20px;
+            width: 250px;
+            padding: 12px;
+            background: rgba(0, 0, 0, 0.7);
+            border-radius: 10px;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.5);
+            color: white;
         }
 
-        .container {
-            max-width: 280px;
-            width: 100%;
-        }
-
-        .progress-wrapper {
-            border-radius: 15px;
-            padding: 5px;
-            background: rgba(0, 0, 0, 0.3);
-        }
-
-        /* Adjustments for smaller, rectangular shape */
-        .header {
+        .hud-header {
             display: flex;
-            flex-direction: row;
             justify-content: space-between;
-            padding-bottom: 8px;
+            margin-bottom: 10px;
         }
 
-        .stats {
-            font-size: 12px;
+        .hud-header .logo {
+            width: 35px;
+            height: 35px;
+            background-color: #8a2be2;
+            border-radius: 50%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
         }
 
-        .resources {
+        .hud-header .logo img {
+            width: 20px;
+            height: 20px;
+        }
+
+        .hud-header .user-info {
+            text-align: right;
             font-size: 14px;
         }
 
-        .progress-bars {
-            padding-top: 10px;
+        .hud-header .user-info .username {
+            font-size: 18px;
+            font-weight: bold;
         }
+
+        .hud-header .user-info .rank {
+            font-size: 12px;
+            color: #ff8c00;
+        }
+
+        .hud-stats {
+            margin-bottom: 15px;
+            font-size: 14px;
+        }
+
+        .hud-stats .stat {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 5px;
+        }
+
+        .hud-stats .stat i {
+            margin-right: 5px;
+            color: #ff8c00;
+        }
+
+        .hud-resources {
+            font-size: 14px;
+            margin-bottom: 10px;
+        }
+
+        .hud-resources .resource {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 5px;
+        }
+
+        .hud-progress {
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+        }
+
+        .progress-bar {
+            width: 100%;
+            height: 5px;
+            background: #555;
+            border-radius: 5px;
+        }
+
+        .progress-bar .fill {
+            height: 100%;
+            border-radius: 5px;
+            background: linear-gradient(90deg, #8a2be2, #4b0082);
+        }
+
     </style>
 </head>
 
-<body class="flex items-center justify-center">
-    <div class="glass-bg floating rounded-lg p-4 shadow-gradient container">
+<body>
+
+    <div class="hud-container">
         <!-- Header -->
-        <div class="header border-b border-purple-700 pb-2">
-            <div class="flex items-center space-x-2">
-                <div class="bg-purple-800 p-2 rounded-md shadow-md">
-                    <img src="https://placehold.co/50x50" alt="Logo" class="w-8 h-8 rounded-full">
-                </div>
-                <div>
-                    <div class="text-white text-xl font-semibold text-glow">11</div>
-                    <div class="text-purple-400 text-sm">გამარჯობა</div>
-                </div>
+        <div class="hud-header">
+            <div class="logo">
+                <img src="https://placehold.co/20x20" alt="Logo">
             </div>
-            <div class="text-right">
-                <div class="text-purple-400 text-sm">2 სტარი</div>
+            <div class="user-info">
+                <div class="username">11</div>
+                <div class="rank">2 Стари</div>
             </div>
         </div>
 
         <!-- Stats -->
-        <div class="mt-4 stats">
-            <div class="flex items-center justify-between mb-2">
-                <div class="flex items-center space-x-2">
-                    <div class="bg-purple-800 p-2 rounded-full icon-hover smooth-transition">
-                        <i class="fas fa-user text-white"></i>
-                    </div>
-                    <div class="text-purple-400 text-lg">2 / 1000</div>
-                </div>
-                <div class="flex items-center space-x-2">
-                    <div class="text-purple-400 text-sm">ID:</div>
-                    <div class="text-white text-lg">0</div>
-                </div>
+        <div class="hud-stats">
+            <div class="stat">
+                <div><i class="fa fa-user"></i> 2 / 1000</div>
+                <div>ID: 0</div>
             </div>
-
-            <!-- Stars -->
-            <div class="flex space-x-1">
-                <i class="fas fa-star text-orange-600 icon-hover smooth-transition"></i>
-                <i class="fas fa-star text-orange-600 icon-hover smooth-transition"></i>
-                <i class="fas fa-star text-orange-600 icon-hover smooth-transition"></i>
-                <i class="fas fa-star text-orange-600 icon-hover smooth-transition"></i>
-                <i class="fas fa-star text-orange-600 icon-hover smooth-transition"></i>
+            <div class="stat">
+                <div>Stars: <span style="color: #ff8c00;">★★★★★</span></div>
             </div>
         </div>
 
         <!-- Resources -->
-        <div class="mt-4 resources">
-            <div class="flex justify-between items-center text-white mb-2">
-                <div class="text-lg">6673552₾</div>
-                <i class="fas fa-lock text-orange-500 text-xl"></i>
+        <div class="hud-resources">
+            <div class="resource">
+                <div>6673552₾</div>
+                <div><i class="fa fa-lock"></i></div>
             </div>
-            <div class="flex justify-between items-center text-white">
-                <div class="text-lg">5000₾</div>
-                <i class="fas fa-horse text-purple-500 text-xl"></i>
+            <div class="resource">
+                <div>5000₾</div>
+                <div><i class="fa fa-horse"></i></div>
             </div>
         </div>
 
         <!-- Progress Bars -->
-        <div class="mt-4 progress-bars space-y-2">
-            <div class="progress-wrapper">
-                <div class="w-full bg-gray-800 rounded-full h-2.5">
-                    <div class="progress-bar h-2.5 rounded-full" style="width: 75%;"></div>
-                </div>
+        <div class="hud-progress">
+            <div class="progress-bar">
+                <div class="fill" style="width: 75%;"></div>
             </div>
-            <div class="progress-wrapper">
-                <div class="w-full bg-gray-800 rounded-full h-2.5">
-                    <div class="progress-bar h-2.5 rounded-full" style="width: 50%;"></div>
-                </div>
+            <div class="progress-bar">
+                <div class="fill" style="width: 50%;"></div>
             </div>
         </div>
     </div>
-</body>
 
+</body>
 </html>
