@@ -15,12 +15,13 @@
             position: fixed;
             top: 20px;
             right: 20px;
-            width: 250px;
+            width: 280px;
             padding: 12px;
             background: rgba(0, 0, 0, 0.7);
             border-radius: 10px;
             box-shadow: 0 4px 20px rgba(0, 0, 0, 0.5);
             color: white;
+            transition: all 0.3s ease-in-out;
         }
 
         .hud-header {
@@ -155,6 +156,33 @@
             </div>
         </div>
     </div>
+
+    <script>
+        // JavaScript function to receive and update HUD elements
+        function updateUsername(username) {
+            document.getElementById("username").innerText = username;
+        }
+
+        function updateRank(rank) {
+            document.getElementById("rank").innerText = "Rank: " + rank;
+        }
+
+        function updateMoney(money) {
+            document.getElementById("money").innerText = money + "₾";
+        }
+
+        function updatePoints(points) {
+            document.getElementById("points").innerText = points + "₾";
+        }
+
+        function updateProgress1(progress) {
+            document.getElementById("progress1").style.width = progress + "%";
+        }
+
+        function updateProgress2(progress) {
+            document.getElementById("progress2").style.width = progress + "%";
+        }
+    </script>
 
 </body>
 </html>
