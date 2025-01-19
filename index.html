@@ -3,45 +3,116 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>SA:MP HUD</title>
-    <link rel="stylesheet" href="hud.css">
+    <title>Game UI Recreation</title>
+    <style>
+        body {
+            background-color: #000; /* Dark background */
+            font-family: sans-serif;
+            color: #fff;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            margin: 0;
+        }
+
+        .container {
+            background-color: rgba(0, 0, 0, 0.5); /* Semi-transparent background */
+            padding: 20px;
+            border-radius: 10px;
+            display: flex;
+            flex-direction: column;
+            align-items: flex-start; /* Align items to the left */
+        }
+        .top-section{
+            display: flex;
+            align-items: center;
+            margin-bottom: 10px;
+        }
+
+        .logo {
+            font-size: 2em;
+            margin-right: 10px;
+            color: skyblue;
+        }
+
+        .level-info {
+            display: flex;
+            align-items: center;
+            background-color: rgba(0, 0, 0, 0.7);
+            padding: 5px 10px;
+            border-radius: 5px;
+        }
+        .level-number{
+            margin-right: 5px;
+        }
+        .level-bar{
+            width: 100px;
+            height: 5px;
+            background-color: #333;
+            margin-right: 5px;
+            display: flex;
+        }
+        .level-bar-fill{
+            height: 100%;
+            background-color: skyblue;
+            width: 50%; /* Adjust as needed */
+        }
+
+        .arrow {
+            width: 0;
+            height: 0;
+            border-style: solid;
+            border-width: 10px 0 10px 17.3px; /* Adjust for desired arrow shape */
+            border-color: transparent transparent transparent white;
+            margin-left: 5px;
+        }
+        .bottom-section{
+            display: flex;
+            align-items: center;
+        }
+
+        .id-info {
+            background-color: rgba(0, 0, 0, 0.7);
+            padding: 5px 10px;
+            border-radius: 5px;
+            margin-right: 10px;
+        }
+        .stars{
+            margin-top: 10px;
+        }
+        .star{
+            color: yellow;
+            font-size: 1.5em;
+        }
+    </style>
 </head>
 <body>
-    <div id="hud">
-        <!-- Top Left Text -->
-        <div id="server-name">🔥 MLIFE Role Play</div>
 
-        <!-- Side Icons -->
-        <div id="side-icons">
-            <div class="icon">N</div>
-            <div class="icon">M</div>
-            <div class="icon">P</div>
-            <div class="icon">B</div>
-            <div class="icon">X</div>
-        </div>
-
-        <!-- Top Right Stats -->
-        <div id="top-right">
-            <div id="player-info">
-                <div class="stat">11</div>
-                <div class="stat">2</div>
-                <div class="stat">ID: 0</div>
+    <div class="container">
+        <div class="top-section">
+            <div class="logo">M</div>
+            <div class="level-info">
+                <span class="level-number">11</span>
+                <span>Level</span>
+                <div class="level-bar">
+                    <div class="level-bar-fill"></div>
+                </div>
+                <div class="arrow"></div>
             </div>
-            <div id="stars">⭐⭐⭐⭐⭐</div>
         </div>
-
-        <!-- Money and Resources -->
-        <div id="resources">
-            <div class="resource"><span class="money">6673552₾</span></div>
-            <div class="resource"><span class="car-money">5000₾</span></div>
+        <div class="bottom-section">
+            <div class="id-info">2 / 1000 ID 0</div>
         </div>
-
-        <!-- Speedometer -->
-        <div id="speedometer">
-            <div class="speed">73</div>
-            <div class="unit">MPH</div>
+        <div class="stars">
+            <span class="star">★</span>
+            <span class="star">★</span>
+            <span class="star">★</span>
+            <span class="star">★</span>
+            <span class="star">★</span>
+            <span class="star">★</span>
         </div>
     </div>
+
 </body>
-<script src="hud.js"></script>
 </html>
